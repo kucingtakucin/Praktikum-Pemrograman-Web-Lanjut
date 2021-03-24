@@ -1,4 +1,4 @@
-<?php require_once "autoload.php";?>
+<?php require_once "autoload.php" ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +32,10 @@
     <?php
     // Copyright 2021. Adam Arthur Faizal. All Rights Reserved
     $form = new Form();
-    $db = new Database();
+    $mahasiswa = new MahasiswaController();
     if (isset($_POST["submit"])) {
-            $db->insert($_POST);
         $request = (object) $_POST;
-        if ($db->insert($request)): ?>
+        if ($mahasiswa->insert($request)): ?>
             <div id="mahasiswa" data-success="<?= $request->pesan ?>" data-nama="Data Mahasiswa"></div>
         <?php endif;
     } ?>
@@ -78,7 +77,7 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                            <?php foreach($db->fetchAll() as $item): ?>
+                            <?php foreach($mahasiswa->fetchAll() as $item): ?>
                                 <tr>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="text-sm text-gray-100"><?= $item->nim ?></div>
