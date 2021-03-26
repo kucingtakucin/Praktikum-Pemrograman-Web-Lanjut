@@ -140,9 +140,7 @@
                                             'D3 Teknik Informatika' => 'D3 Teknik Informatika',
                                             'S1 Matematika' => 'S1 Matematika',
                                             'S1 Fisika' => 'S1 Fisika',
-                                            'S1 Kimia' => 'S1 Kimia',
-                                            'S1 Biologi' => 'S1 Biologi'
-                                    ]) ?>
+                                       ?>
                                     <?php $form->radio('Warga Negara', 'warga_negara', 'warga_negara', ['WNA', 'WNI']) ?>
                                     <?php $form->input('Status', 'status', 'status', 'Aktif') ?>
                                     <?php $form->textArea('Keterangan', 'keterangan', 'keterangan'); ?>
