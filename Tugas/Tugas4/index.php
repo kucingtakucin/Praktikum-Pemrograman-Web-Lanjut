@@ -139,7 +139,7 @@
                                     <?php $form->select('Prodi', 'prodi', 'prodi', [
                                             'D3 Teknik Informatika' => 'D3 Teknik Informatika',
                                             'S1 Matematika' => 'S1 Matematika',
-                                            'S1 Fisika' => 'S1 Fisika',
+                                            'S1 Fisika' => 'S1 Fisika',])
                                        ?>
                                     <?php $form->radio('Warga Negara', 'warga_negara', 'warga_negara', ['WNA', 'WNI']) ?>
                                     <?php $form->input('Status', 'status', 'status', 'Aktif') ?>
