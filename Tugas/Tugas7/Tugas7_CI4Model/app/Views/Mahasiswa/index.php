@@ -3,8 +3,15 @@
 <?= $this->section('content') ?>
 <!-- This example requires Tailwind CSS v2.0+ -->
 <div class="container mx-auto">
+    <?php if (session()->has('success')): ?>
+    <div id="flash-message"
+        data-message="<?= session()->getFlashdata('success') ?>">
+    </div>
+    <?php endif ?>
     <h1 class="text-6xl my-6 text-gray-200">Data Mahasiswa</h1>
-    <a href="<?= route_to('Mahasiswa.new') ?>" class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tambah Data</a>
+    <a href="<?= route_to('Mahasiswa.new') ?>"
+        class="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Tambah
+        Data</a>
     <div class="hidden sm:block" aria-hidden="true">
         <div class="py-5">
             <div class="border-t border-gray-200"></div>
@@ -16,33 +23,40 @@
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
                     <table class="min-w-full divide-y divide-gray-200">
                         <thead class="bg-gray-800">
-                        <tr>
-                            <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                NIM
-                            </th>
-                            <th scope="col" class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                Nama Lengkap
-                            </th>
-                            <th scope="col" class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                Email
-                            </th>
-                            <th scope="col" class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                Prodi
-                            </th>
-                            <th scope="col" class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
-                                #
-                            </th>
-                        </tr>
+                            <tr>
+                                <th scope="col"
+                                    class="px-6 py-3 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                    NIM
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                    Nama Lengkap
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                    Email
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                    Prodi
+                                </th>
+                                <th scope="col"
+                                    class="px-6 py-1 text-left text-xs font-medium text-gray-100 uppercase tracking-wider">
+                                    #
+                                </th>
+                            </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
-                        <?php /** @var array $mahasiswa */
-                        foreach($mahasiswa as $item): ?>
+                            <?php /** @var array $mahasiswa */
+                        foreach ($mahasiswa as $item): ?>
                             <tr>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-100"><?= $item->nim ?></div>
+                                    <div class="text-sm text-gray-100"><?= $item->nim ?>
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
-                                    <div class="text-sm text-gray-100"><?= $item->nama_lengkap ?></div>
+                                    <div class="text-sm text-gray-100"><?= $item->nama_lengkap ?>
+                                    </div>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-100">
                                     <?= $item->email ?>
@@ -51,16 +65,22 @@
                                     <?= $item->prodi ?>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-left text-sm">
-                                    <a href="<?= route_to('Mahasiswa.edit', $item->id) ?>" class="text-indigo-600 hover:text-indigo-900 font-bold mr-4">Edit</a>
-                                    <form action="<?= route_to('Mahasiswa.delete', $item->id) ?>" method="post" class="inline">
+                                    <a href="<?= route_to('Mahasiswa.show', $item->id) ?>"
+                                        class="text-indigo-600 hover:text-indigo-900 font-bold mr-4">Detail</a>
+                                    <a href="<?= route_to('Mahasiswa.edit', $item->id) ?>"
+                                        class="text-indigo-600 hover:text-indigo-900 font-bold mr-4">Edit</a>
+                                    <form
+                                        action="<?= route_to('Mahasiswa.delete', $item->id) ?>"
+                                        method="post" class="inline">
                                         <?= csrf_field()?>
                                         <input type="hidden" name="_method" value="DELETE" />
-                                        <button type="submit" class="text-red-600 hover:text-red-900 font-bold tombol-hapus">Delete</button>
+                                        <button type="submit"
+                                            class="text-red-600 hover:text-red-900 font-bold tombol-hapus">Delete</button>
                                     </form>
                                 </td>
                             </tr>
-                        <?php endforeach; ?>
-                        <!-- More items... -->
+                            <?php endforeach; ?>
+                            <!-- More items... -->
                         </tbody>
                     </table>
                 </div>
@@ -68,4 +88,4 @@
         </div>
     </div>
 </div>
-<?= $this->endSection() ?>
+<?= $this->endSection() ?>;

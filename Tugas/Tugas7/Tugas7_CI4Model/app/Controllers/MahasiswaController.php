@@ -23,11 +23,13 @@ class MahasiswaController extends BaseController
      */
     public function index(): string
     {
-	    $data = [
+        // $data['mahasiswa'] = $this->mahasiswa->findAll();
+        $data = [
             'mahasiswa' => $this->mahasiswa->findAll(),
         ];
-		return view('Mahasiswa/index', $data);
-	}
+
+        return view('Mahasiswa/index', $data);
+    }
 
     /**
      * @return string
@@ -67,7 +69,11 @@ class MahasiswaController extends BaseController
 
     public function show($id)
     {
-
+        $data = [
+            'mahasiswa' => $this->mahasiswa->find($id)
+        ];
+        // return view('Mahasiswa/show', $data);
+        return $this->response->setJSON($data);
     }
 
     /**
@@ -103,7 +109,7 @@ class MahasiswaController extends BaseController
             'keterangan' => 'required'
         ])) {
             $this->mahasiswa->update($id, $this->request->getRawInput());
-            return redirect()->route('Mahasiswa.index')->with('success', "Berhasil Ditambahkan!");
+            return redirect()->route('Mahasiswa.index')->with('success', "Berhasil Diubah!");
         }
         $validation =  Services::validation();
         return redirect()->route('Mahasiswa.edit', [$id])->withInput()->with('validation', $validation);
@@ -116,6 +122,6 @@ class MahasiswaController extends BaseController
     public function delete($id): RedirectResponse
     {
         $this->mahasiswa->delete($id);
-        return redirect()->route('Mahasiswa.index');
+        return redirect()->route('Mahasiswa.index')->with('success', "Berhasil Dihapus!");
     }
 }

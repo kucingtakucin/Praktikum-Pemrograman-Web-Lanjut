@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+    if (document.getElementById('flash-message')) {
+        Swal.fire(
+            'Data Mahasiswa',
+            $('#flash-message').data('message'),
+            'success'
+          )
+    }
+
+
     $('.tombol-hapus').click(function (event) {
         event.preventDefault();
         Swal.fire({
